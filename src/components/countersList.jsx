@@ -9,28 +9,21 @@ const CountersList = () => {
     { id: 3, value: 0, name: "Тарелка" },
     { id: 4, value: 0, name: "Набор минималиста" },
   ];
+
   const [counters, setCounters] = useState(initialState);
 
-  const updatedState = [...counters];
-
   const handleIncrement = (id) => {
-    for (let state of updatedState) {
-      if (state.id === id) {
-        state.value += 1;
-      }
-    }
-
-    setCounters(updatedState);
+    const elementIndex = counters.findIndex((el) => el.id === id);
+    const newCounters = [...counters];
+    newCounters[elementIndex].value++;
+    setCounters(newCounters);
   };
 
   const handleDecrement = (id) => {
-    for (let state of updatedState) {
-      if (state.id === id) {
-        state.value -= 1;
-      }
-    }
-
-    setCounters(updatedState);
+    const elementIndex = counters.findIndex((el) => el.id === id);
+    const newCounters = [...counters];
+    newCounters[elementIndex].value--;
+    setCounters(newCounters);
   };
 
   const handleDelete = (id) => {
